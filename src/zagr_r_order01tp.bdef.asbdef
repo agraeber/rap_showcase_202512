@@ -1,0 +1,80 @@
+managed;
+strict ( 2 );
+with draft;
+define behavior for ZAGR_R_Order01TP alias Order
+implementation in class ZAGR_BP_R_Order01TP unique
+persistent table ZAGR_ORDERHD
+draft table ZAGRORDER00D
+etag master LocalLastChangedAt
+lock master total etag LastChangedAt
+authorization master( global )
+{
+  field ( readonly )
+   LocalCreatedBy,
+   LocalCreatedAt,
+   LocalLastChangedAt,
+   LastChangedAt;
+
+  field ( readonly : update )
+   SalesorderID;
+
+
+  create;
+  update (features : instance);
+  delete;
+
+  draft action Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare;
+
+  mapping for ZAGR_ORDERHD
+  {
+    SalesorderID = SALESORDER_ID;
+    CustomerID = CUSTOMER_ID;
+    OrderDate = ORDER_DATE;
+    Status = STATUS;
+    LocalCreatedBy = LOCAL_CREATED_BY;
+    LocalCreatedAt = LOCAL_CREATED_AT;
+    LocalLastChangedBy = LOCAL_LAST_CHANGED_BY;
+    LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+    LastChangedAt = LAST_CHANGED_AT;
+  }
+
+  association _Item { create ; with draft; }
+}
+
+define behavior for ZAGR_R_ItemTP alias Item
+implementation in class ZAGR_BP_R_ItemTP unique
+persistent table ZAGR_ORDERITM
+draft table ZAGRITEM00D
+etag master LocalLastChangedAt
+lock dependent by _Order
+authorization dependent by _Order
+{
+  field ( readonly )
+   SalesorderID;
+
+  field ( readonly : update )
+   ItemNo;
+
+
+  update;
+  delete;
+
+  mapping for ZAGR_ORDERITM
+  {
+    SalesorderID = SALESORDER_ID;
+    ItemNo = ITEM_NO;
+    MaterialID = MATERIAL_ID;
+    Quantity = QUANTITY;
+    ItemPrice = ITEM_PRICE;
+    TotalPrice = TOTAL_PRICE;
+    Currency = CURRENCY;
+    LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+  }
+
+  association _Order { with draft; }
+
+}

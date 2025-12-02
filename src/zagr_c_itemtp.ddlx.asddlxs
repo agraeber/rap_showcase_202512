@@ -1,0 +1,96 @@
+@Metadata.layer: #CUSTOMER
+@UI: {
+  headerInfo: {
+    typeName: 'Item', 
+    typeNamePlural: 'Items', 
+    title: {
+      type: #STANDARD, 
+      label: 'Item', 
+      value: 'ItemNo'
+    }
+  }, 
+  presentationVariant: [ {
+    sortOrder: [ {
+      by: 'ItemNo', 
+      direction: #DESC
+    } ], 
+    visualizations: [ {
+      type: #AS_LINEITEM
+    } ]
+  } ]
+}
+annotate view ZAGR_C_ItemTP with
+{
+  @UI.facet: [ {
+    id: 'idItem', 
+    purpose: #STANDARD, 
+    type: #IDENTIFICATION_REFERENCE, 
+    label: 'Item', 
+    position: 10 
+  } ]
+  @UI.lineItem: [ {
+    position: 10 , 
+    importance: #HIGH, 
+    label: 'SalesorderID'
+  } ]
+  @UI.identification: [ {
+    position: 10 , 
+    label: 'SalesorderID'
+  } ]
+  SalesorderID;
+  
+  @UI.lineItem: [ {
+    position: 20 , 
+    importance: #HIGH, 
+    label: 'ItemNo'
+  } ]
+  @UI.identification: [ {
+    position: 20 , 
+    label: 'ItemNo'
+  } ]
+  ItemNo;
+  
+  @UI.lineItem: [ {
+    position: 30 , 
+    importance: #HIGH, 
+    label: 'MaterialID'
+  } ]
+  @UI.identification: [ {
+    position: 30 , 
+    label: 'MaterialID'
+  } ]
+  MaterialID;
+  
+  @UI.lineItem: [ {
+    position: 40 , 
+    importance: #HIGH, 
+    label: 'Quantity'
+  } ]
+  @UI.identification: [ {
+    position: 40 , 
+    label: 'Quantity'
+  } ]
+  Quantity;
+  
+  @UI.lineItem: [ {
+    position: 50 , 
+    importance: #HIGH, 
+    label: 'ItemPrice'
+  } ]
+  @UI.identification: [ {
+    position: 50 , 
+    label: 'ItemPrice'
+  } ]
+  ItemPrice;
+  
+  @UI.lineItem: [ {
+    position: 60 , 
+    importance: #HIGH, 
+    label: 'TotalPrice'
+  } ]
+  @UI.identification: [ {
+    position: 60 , 
+    label: 'TotalPrice'
+  } ]
+  TotalPrice;
+}

@@ -1,0 +1,8 @@
+@ObjectModel.leadingEntity.name: 'ZAGR_C_Order01TP'
+define service ZAGR_UI_Order01 {
+  expose zagr_c_Order01TP   as Orderdata;
+  expose ZAGR_C_ItemTP      as Item;
+  expose I_Currency         as Currency;
+  expose ZAGR_I_CUSTOMER_VH as CustomerVH;
+  expose zagr_i_Material_VH as MaterialVH;
+}
