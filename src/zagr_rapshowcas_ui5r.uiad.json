@@ -1,0 +1,35 @@
+{
+  "formatVersion": "2",
+  "header": {
+    "description": "An SAP Fiori application.",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "generalInformation": {
+    "appType": "ui5",
+    "catalogId": "SAP_TC_UI5_REPO_UIAD",
+    "targetMappingTitle": "Orders"
+  },
+  "ui5AppDetails": {
+    "appId": "ordershowcase"
+  },
+  "navigation": {
+    "targetMappingId": "UI5R_C09826CAA256B99D38F7E96A03768BECCD0BA311_TM",
+    "semanticObject": "order",
+    "action": "manage",
+    "desktop": true,
+    "tablet": true,
+    "phone": true
+  },
+  "tiles": [
+    {
+      "id": "UI5R_C09826CAA256B99D38F7E96A03768BECCD0BA311_AL",
+      "tileType": "static",
+      "isDefault": true,
+      "standard": {
+        "title": "Orders",
+        "subtitle": "Showcase A. Graeber"
+      }
+    }
+  ]
+}
