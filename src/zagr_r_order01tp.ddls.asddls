@@ -7,7 +7,8 @@
 define root view entity ZAGR_R_Order01TP
   as select from zagr_orderhd as Orderdata
 
-  composition [0..*] of ZAGR_R_ItemTP as _Item
+  composition [0..*] of ZAGR_R_ItemTP      as _Item
+  association [0..1] to ZAGR_I_ORDER_STATE as _Status on $projection.Status = _Status.Status
 
 {
   key salesorder_id         as SalesorderID,
@@ -16,6 +17,7 @@ define root view entity ZAGR_R_Order01TP
       order_date            as OrderDate,
       status                as Status,
 
+      _Status.Description   as StatusText,
       @Semantics.user.createdBy: true
       local_created_by      as LocalCreatedBy,
 

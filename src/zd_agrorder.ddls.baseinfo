@@ -2,14 +2,9 @@
 "BASEINFO":
 {
 "FROM":
-[
-"ZAGR_I_ORDER_STATE",
-"ZAGR_ORDERHD"
-],
+[],
 "ASSOCIATED":
-[
-"ZAGR_R_ITEMTP"
-],
+[],
 "BASE":
 [],
 "ANNO_REF":

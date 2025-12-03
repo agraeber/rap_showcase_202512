@@ -1,79 +1,92 @@
-managed;
+managed with additional save implementation in class ZAGR_BP_R_Order01TP unique;
 strict ( 2 );
 with draft;
 define behavior for ZAGR_R_Order01TP alias Order
-implementation in class ZAGR_BP_R_Order01TP unique
-persistent table ZAGR_ORDERHD
-draft table ZAGRORDER00D
+persistent table zagr_orderhd
+draft table zagrorder00d
 etag master LocalLastChangedAt
 lock master total etag LastChangedAt
-authorization master( global )
+authorization master ( global )
 {
   field ( readonly )
-   LocalCreatedBy,
-   LocalCreatedAt,
-   LocalLastChangedAt,
-   LastChangedAt;
+  LocalCreatedBy,
+  LocalCreatedAt,
+  LocalLastChangedAt,
+  LastChangedAt;
 
   field ( readonly : update )
-   SalesorderID;
-
+  SalesorderID;
+  field ( readonly )
+  Status;
 
   create;
-  update (features : instance);
-  delete;
-
-  draft action Edit;
+  update ( features : instance );
+  delete ( features : instance );
+  draft action ( features : instance ) Edit;
   draft action Activate optimized;
   draft action Discard;
   draft action Resume;
+  //  draft action Share;
   draft determine action Prepare;
+  action ( features : instance ) SetToNew result [1] $self;
+  action ( features : instance ) SetInProcess result [1] $self;
+  action ( features : instance ) Release result [1] $self;
+  action ( features : instance ) Ship result [1] $self;
+  action ( features : instance ) Cancel result [1] $self;
 
-  mapping for ZAGR_ORDERHD
-  {
-    SalesorderID = SALESORDER_ID;
-    CustomerID = CUSTOMER_ID;
-    OrderDate = ORDER_DATE;
-    Status = STATUS;
-    LocalCreatedBy = LOCAL_CREATED_BY;
-    LocalCreatedAt = LOCAL_CREATED_AT;
-    LocalLastChangedBy = LOCAL_LAST_CHANGED_BY;
-    LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
-    LastChangedAt = LAST_CHANGED_AT;
+  event created parameter ZD_AGRORDER;
+  event updated for side effects;
+  side effects
+  { event updated affects field *, messages;
   }
 
-  association _Item { create ; with draft; }
+//  determination setStatusToNew on modify { create; }
+
+  mapping for zagr_orderhd
+    {
+      SalesorderID       = SALESORDER_ID;
+      CustomerID         = CUSTOMER_ID;
+      OrderDate          = ORDER_DATE;
+      Status             = STATUS;
+      LocalCreatedBy     = LOCAL_CREATED_BY;
+      LocalCreatedAt     = LOCAL_CREATED_AT;
+      LocalLastChangedBy = LOCAL_LAST_CHANGED_BY;
+      LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+      LastChangedAt      = LAST_CHANGED_AT;
+    }
+
+  association _Item { create; with draft; }
 }
 
 define behavior for ZAGR_R_ItemTP alias Item
 implementation in class ZAGR_BP_R_ItemTP unique
-persistent table ZAGR_ORDERITM
-draft table ZAGRITEM00D
+persistent table zagr_orderitm
+draft table zagritem00d
 etag master LocalLastChangedAt
 lock dependent by _Order
 authorization dependent by _Order
 {
   field ( readonly )
-   SalesorderID;
+  SalesorderID;
 
   field ( readonly : update )
-   ItemNo;
+  ItemNo;
 
 
   update;
   delete;
 
-  mapping for ZAGR_ORDERITM
-  {
-    SalesorderID = SALESORDER_ID;
-    ItemNo = ITEM_NO;
-    MaterialID = MATERIAL_ID;
-    Quantity = QUANTITY;
-    ItemPrice = ITEM_PRICE;
-    TotalPrice = TOTAL_PRICE;
-    Currency = CURRENCY;
-    LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
-  }
+  mapping for zagr_orderitm
+    {
+      SalesorderID       = SALESORDER_ID;
+      ItemNo             = ITEM_NO;
+      MaterialID         = MATERIAL_ID;
+      Quantity           = QUANTITY;
+      ItemPrice          = ITEM_PRICE;
+      TotalPrice         = TOTAL_PRICE;
+      Currency           = CURRENCY;
+      LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+    }
 
   association _Order { with draft; }
 

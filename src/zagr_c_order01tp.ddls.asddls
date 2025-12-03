@@ -18,6 +18,7 @@ define root view entity zagr_c_Order01TP
       CustomerID,
       OrderDate,
       Status,
+      StatusText,
       LocalCreatedBy,
       LocalCreatedAt,
       LocalLastChangedBy,

@@ -3,13 +3,10 @@
 {
 "FROM":
 [
-"ZAGR_I_ORDER_STATE",
-"ZAGR_ORDERHD"
+"ZAGR_ORDER_STATE"
 ],
 "ASSOCIATED":
-[
-"ZAGR_R_ITEMTP"
-],
+[],
 "BASE":
 [],
 "ANNO_REF":
