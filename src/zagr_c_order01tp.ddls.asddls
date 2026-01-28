@@ -9,7 +9,7 @@
 @Search.searchable: true
 
 define root view entity zagr_c_Order01TP
- provider contract transactional_query
+  provider contract transactional_query
   as projection on ZAGR_R_Order01TP as Orderdata
 {
       @Search.defaultSearchElement:true
@@ -19,6 +19,10 @@ define root view entity zagr_c_Order01TP
       OrderDate,
       Status,
       StatusText,
+      FileContent,
+      FileName,
+      
+      MimeType,
       LocalCreatedBy,
       LocalCreatedAt,
       LocalLastChangedBy,
@@ -26,5 +30,5 @@ define root view entity zagr_c_Order01TP
       LastChangedAt,
 
       /* Associations */
-      _Item: redirected to composition child ZAGR_C_ItemTP
+      _Item : redirected to composition child ZAGR_C_ItemTP
 }

@@ -48,6 +48,9 @@ authorization master ( global )
       CustomerID         = CUSTOMER_ID;
       OrderDate          = ORDER_DATE;
       Status             = STATUS;
+      FileContent = filecontent;
+      Filename = filename;
+      MimeType = mimetype;
       LocalCreatedBy     = LOCAL_CREATED_BY;
       LocalCreatedAt     = LOCAL_CREATED_AT;
       LocalLastChangedBy = LOCAL_LAST_CHANGED_BY;

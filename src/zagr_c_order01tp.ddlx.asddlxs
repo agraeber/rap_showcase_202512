@@ -2,7 +2,8 @@
 
 @UI.headerInfo: { typeName: 'Order',
                   typeNamePlural: 'Orders',
-                  title: { type: #STANDARD, label: 'Order', value: 'SalesorderID' } }
+                  title: { type: #STANDARD, label: 'Order', value: 'SalesorderID' },
+                   imageUrl: 'FileContent' }
 
 @UI.presentationVariant: [ { sortOrder: [ { by: 'SalesorderID', direction: #ASC } ],
                              visualizations: [ { type: #AS_LINEITEM } ] } ]
@@ -10,6 +11,7 @@
 annotate view zagr_c_Order01TP with
 
 {
+  @EndUserText.label: 'File'
   @UI.facet: [ { id: 'idCollection', type: #COLLECTION, label: 'Order', position: 10 },
                { id: 'idIdentification',
                  parentId: 'idCollection',
@@ -32,9 +34,26 @@ annotate view zagr_c_Order01TP with
                  purpose: #HEADER,
                  type: #DATAPOINT_REFERENCE,
                  position: 40,
-                 targetQualifier: 'StatusData' } ]
+                 targetQualifier: 'StatusData' },
+               { id: 'idFiles',
+                 label: 'Files',
+                 position: 35,
+                 type: #IDENTIFICATION_REFERENCE,
+                 targetQualifier: 'FILE' } ]
+
+  @UI.identification: [ { position: 80, qualifier: 'FILE' } ]
+  @UI.lineItem: [ { position: 10, importance: #HIGH, label: 'Image' } ]
+  FileContent;
+  
+  @UI.hidden: true
+  MimeType;
+
+  @UI.hidden: true
+  FileName;
+
+
   @UI.identification: [ { position: 10, label: 'SalesorderID' } ]
-  @UI.lineItem: [ { position: 10, importance: #HIGH, label: 'SalesorderID' },
+  @UI.lineItem: [ { position: 20, importance: #HIGH, label: 'SalesorderID' },
                   { type: #FOR_ACTION, dataAction: 'SetToNew', label: 'New    ' },
                   { type: #FOR_ACTION, dataAction: 'Release', label: 'Release     ' },
                   { type: #FOR_ACTION, dataAction: 'SetInProcess', label: 'SetInProcess' },
@@ -45,21 +64,21 @@ annotate view zagr_c_Order01TP with
   SalesorderID;
 
   @UI.identification: [ { position: 20, label: 'CustomerID' } ]
-  @UI.lineItem: [ { position: 20, importance: #HIGH, label: 'CustomerID' } ]
+  @UI.lineItem: [ { position: 30, importance: #HIGH, label: 'CustomerID' } ]
   @UI.selectionField: [ { position: 20 } ]
   CustomerID;
 
 //  @UI.identification: [ { position: 30, label: 'OrderDate' } ]
   @EndUserText.label: 'Order Date'
   @UI.fieldGroup: [ { qualifier: 'DatesGroup', position: 10 } ]
-  @UI.lineItem: [ { position: 30, importance: #HIGH, label: 'OrderDate' } ]
+  @UI.lineItem: [ { position: 40, importance: #HIGH, label: 'OrderDate' } ]
   OrderDate;
 
   @UI.identification: [ { position: 40, label: 'Status' } ]
   Status;
 
   @UI.dataPoint: { qualifier: 'StatusData', title: 'Status' }
-  @UI.lineItem: [ { position: 40, importance: #HIGH, label: 'Status' } ]
+  @UI.lineItem: [ { position: 50, importance: #HIGH, label: 'Status' } ]
   @UI.textArrangement: #TEXT_ONLY
   StatusText;
 

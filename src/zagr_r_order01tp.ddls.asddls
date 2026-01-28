@@ -16,8 +16,16 @@ define root view entity ZAGR_R_Order01TP
       customer_id           as CustomerID,
       order_date            as OrderDate,
       status                as Status,
-
+@Semantics.largeObject: { mimeType: 'MimeType',
+                          fileName: 'FileName',
+                          acceptableMimeTypes: [ 'image/jpeg' ] }         
+//@Semantics.imageUrl: true         
+      filecontent           as FileContent,
+      filename              as FileName,
+@Semantics.mimeType: true        
+      mimetype              as MimeType,
       _Status.Description   as StatusText,
+
       @Semantics.user.createdBy: true
       local_created_by      as LocalCreatedBy,
 
