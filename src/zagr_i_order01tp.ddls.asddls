@@ -12,13 +12,9 @@ define root view entity ZAGR_I_Order01TP
       CustomerID,
       OrderDate,
       Status,
-
-      FileContent as FileContentList,
       FileContent,
       FileName,
-
       MimeType,
-
       LocalCreatedBy,
       LocalCreatedAt,
       LocalLastChangedBy,
@@ -26,5 +22,7 @@ define root view entity ZAGR_I_Order01TP
       LastChangedAt,
 
       /* Associations */
-      _Item : redirected to composition child ZAGR_I_ItemTP
+      _Item : redirected to composition child ZAGR_I_ItemTP,
+      _Customer
+
 }

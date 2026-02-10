@@ -28,11 +28,11 @@ authorization master ( global )
   draft action Resume;
   //  draft action Share;
   draft determine action Prepare;
-  action ( features : instance ) SetToNew result [1] $self;
-  action ( features : instance ) SetInProcess result [1] $self;
-  action ( features : instance ) Release result [1] $self;
-  action ( features : instance ) Ship result [1] $self;
-  action ( features : instance ) Cancel result [1] $self;
+  action ( features : instance ) SetToNew result [0..1] $self;
+  action ( features : instance ) SetInProcess result [0..1] $self;
+  action ( features : instance ) Release result [0..1] $self;
+  action ( features : instance ) Ship result [0..1] $self;
+  action ( features : instance ) Cancel result [0..1] $self;
 
   event created parameter ZD_AGRORDER;
   event updated for side effects;

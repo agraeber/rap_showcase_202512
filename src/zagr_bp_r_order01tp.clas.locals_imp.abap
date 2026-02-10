@@ -110,24 +110,30 @@ CLASS lhc_order IMPLEMENTATION.
           %action-Ship         = COND #( WHEN order-Status <> zcl_agr_order_state_creator=>co_order_state-inprocess
                                          THEN if_abap_behv=>fc-o-disabled
                                          ELSE if_abap_behv=>fc-o-enabled   )
-          %action-Cancel       = COND #( WHEN order-Status <> zcl_agr_order_state_creator=>co_order_state-shipped
-                                         THEN if_abap_behv=>fc-o-disabled
-                                         ELSE if_abap_behv=>fc-o-enabled   ) ) ).
+*          %action-Cancel       = COND #( WHEN order-Status <> zcl_agr_order_state_creator=>co_order_state-shipped
+*                                         THEN if_abap_behv=>fc-o-disabled
+*                                         ELSE if_abap_behv=>fc-o-enabled   ) ) ).
+          %action-Cancel       = if_abap_behv=>fc-o-enabled   ) ).
   ENDMETHOD.
 
   METHOD settonew.
 
     set_status( i_keys = keys i_status = zcl_agr_order_state_creator=>co_order_state-new ).
-
+    LOOP AT keys INTO DATA(key).
+      insert VALUE #( %tky = key-%tky ) into table result.
+    ENDLOOP.
 
   ENDMETHOD.
 
   METHOD Cancel.
-    set_status( i_keys = keys i_status = zcl_agr_order_state_creator=>co_order_state-cancelled ).
+    set_status( i_keys   = keys
+                i_status = zcl_agr_order_state_creator=>co_order_state-cancelled ).
+
   ENDMETHOD.
 
   METHOD setinprocess.
     set_status( i_keys = keys i_status = zcl_agr_order_state_creator=>co_order_state-inprocess ).
+
   ENDMETHOD.
 
 
@@ -135,12 +141,12 @@ CLASS lhc_order IMPLEMENTATION.
 
   METHOD release.
     set_status( i_keys = keys i_status = zcl_agr_order_state_creator=>co_order_state-released ).
+
   ENDMETHOD.
 
-
   METHOD ship.
-    set_status( i_keys = keys i_status = zcl_agr_order_state_creator=>co_order_state-shipped ).
-
+    set_status( i_keys   = keys
+                i_status = zcl_agr_order_state_creator=>co_order_state-shipped ).
   ENDMETHOD.
   METHOD set_status.
     READ ENTITIES OF ZAGR_R_Order01TP IN LOCAL MODE

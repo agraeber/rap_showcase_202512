@@ -10,24 +10,24 @@ define root view entity ZAGR_R_Order01TP
   composition [0..*] of ZAGR_R_ItemTP      as _Item
   association [0..1] to ZAGR_I_ORDER_STATE as _Status on $projection.Status = _Status.Status
 
+  association [0..1] to ZAGR_R_CUSTOMER as _Customer on $projection.CustomerID = _Customer.Customerid
 {
   key salesorder_id         as SalesorderID,
 
       customer_id           as CustomerID,
       order_date            as OrderDate,
       status                as Status,
-@Semantics.largeObject: { mimeType: 'MimeType',
-                          fileName: 'FileName',
-                          acceptableMimeTypes: [ 'image/jpeg' ] }         
-//@Semantics.imageUrl: true         
+      @Semantics.largeObject: { mimeType: 'MimeType',
+                                fileName: 'FileName',
+                                acceptableMimeTypes: [ 'image/jpeg' ] }
+      //@Semantics.imageUrl: true
       filecontent           as FileContent,
-
-@Semantics.largeObject: { mimeType: 'MimeType',
-                          fileName: 'FileName',
-                          acceptableMimeTypes: [ 'image/jpeg' ] }             
+      @Semantics.largeObject: { mimeType: 'MimeType',
+                                fileName: 'FileName',
+                                acceptableMimeTypes: [ 'image/jpeg' ] }
       filecontent           as FileContentList,
       filename              as FileName,
-@Semantics.mimeType: true        
+      @Semantics.mimeType: true
       mimetype              as MimeType,
       _Status.Description   as StatusText,
 
@@ -45,5 +45,6 @@ define root view entity ZAGR_R_Order01TP
       @Semantics.systemDateTime.lastChangedAt: true
       last_changed_at       as LastChangedAt,
 
-      _Item
+      _Item,
+      _Customer
 }

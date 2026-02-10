@@ -1,0 +1,11 @@
+{
+  "formatVersion": "1",
+  "header": {
+    "description": "SAP Object Node Type ZAGR_MATERIAL",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "name": "ZAGR_MATERIAL",
+  "sapObjectType": "ZAGR_MATERIAL",
+  "rootNode": true
+}

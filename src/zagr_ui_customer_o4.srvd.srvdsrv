@@ -1,0 +1,11 @@
+@EndUserText: {
+  label: 'Service Definition for ZAGR_C_CUSTOMER'
+}
+@ObjectModel: {
+  leadingEntity: {
+    name: 'ZAGR_C_CUSTOMER'
+  }
+}
+define service ZAGR_UI_CUSTOMER_O4 provider contracts odata_v4_ui {
+  expose ZAGR_C_CUSTOMER;
+}

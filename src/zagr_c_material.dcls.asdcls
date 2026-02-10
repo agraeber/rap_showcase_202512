@@ -1,0 +1,6 @@
+@EndUserText.label: 'ZAGR_C_MATERIAL'
+@MappingRole: true
+define role ZAGR_C_MATERIAL {
+  grant select on ZAGR_C_MATERIAL
+  where INHERITING CONDITIONS FROM ENTITY ZAGR_R_MATERIAL REPLACING { ROOT WITH _BaseEntity };
+}

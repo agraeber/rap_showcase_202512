@@ -12,5 +12,6 @@ define view entity ZAGR_I_ItemTP
   TotalPrice,
   Currency,
   LocalLastChangedAt,
-  _Order: redirected to parent ZAGR_I_Order01TP
+  _Order: redirected to parent ZAGR_I_Order01TP,
+  _Product
 }

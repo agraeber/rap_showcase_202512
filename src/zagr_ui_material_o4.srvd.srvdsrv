@@ -1,0 +1,11 @@
+@EndUserText: {
+  label: 'Service Definition for ZAGR_C_MATERIAL'
+}
+@ObjectModel: {
+  leadingEntity: {
+    name: 'ZAGR_C_MATERIAL'
+  }
+}
+define service ZAGR_UI_MATERIAL_O4 provider contracts odata_v4_ui {
+  expose ZAGR_C_MATERIAL as Material;
+}

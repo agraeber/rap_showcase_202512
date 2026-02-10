@@ -32,5 +32,7 @@ define root view entity zagr_c_Order01TP
       LastChangedAt,
 
       /* Associations */
-      _Item : redirected to composition child ZAGR_C_ItemTP
+      _Item : redirected to composition child ZAGR_C_ItemTP,
+      _Customer
+      
 }

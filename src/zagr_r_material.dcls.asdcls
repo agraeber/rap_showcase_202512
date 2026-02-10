@@ -1,0 +1,6 @@
+@EndUserText.label: 'ZAGR_R_MATERIAL'
+@MappingRole: true
+define role ZAGR_R_MATERIAL {
+  grant select on ZAGR_R_MATERIAL
+  where TRUE;
+}

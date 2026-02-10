@@ -1,0 +1,53 @@
+managed implementation in class ZAGR_BP_R_MATERIAL000 unique;
+strict ( 2 );
+with draft;
+extensible;
+define behavior for ZAGR_R_MATERIAL alias Material
+persistent table ZAGR_MATERIAL
+extensible
+draft table ZAGR_MATERIAL_D
+etag master LocalLastChangedAt
+lock master total etag LastChangedAt
+authorization master( global )
+{
+  field ( mandatory : create )
+   Productid;
+
+  field ( readonly )
+   LocalCreatedBy,
+   LocalCreatedAt,
+   LocalLastChangedBy,
+   LocalLastChangedAt,
+   LastChangedAt;
+
+  field ( readonly : update )
+   Productid;
+
+
+  create;
+  update;
+  delete;
+
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Edit;
+  draft action Resume;
+  draft determine action Prepare;
+
+  mapping for ZAGR_MATERIAL corresponding extensible
+  {
+    Productid = productid;
+    Description = description;
+    Price = price;
+    Currency = currency;
+    Filecontent = filecontent;
+    Filename = filename;
+    Mimetype = mimetype;
+    LocalCreatedBy = local_created_by;
+    LocalCreatedAt = local_created_at;
+    LocalLastChangedBy = local_last_changed_by;
+    LocalLastChangedAt = local_last_changed_at;
+    LastChangedAt = last_changed_at;
+  }
+
+}

@@ -8,7 +8,7 @@ define view entity ZAGR_R_ItemTP
   as select from zagr_orderitm
 
   association to parent ZAGR_R_Order01TP as _Order on $projection.SalesorderID = _Order.SalesorderID
-
+  association [0..1] to ZAGR_R_MATERIAL as _Product on $projection.MaterialID = _Product.Productid
 {
   key salesorder_id as SalesorderID, 
   key item_no       as ItemNo,
@@ -27,5 +27,6 @@ define view entity ZAGR_R_ItemTP
       @Semantics.systemDateTime.localInstanceLastChangedAt: true
       local_last_changed_at as LocalLastChangedAt,
 
-      _Order
+      _Order,
+      _Product
 }
