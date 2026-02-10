@@ -41,8 +41,10 @@ annotate view zagr_c_Order01TP with
                  type: #IDENTIFICATION_REFERENCE,
                  targetQualifier: 'FILE' } ]
 
-  @UI.identification: [ { position: 80, qualifier: 'FILE' } ]
   @UI.lineItem: [ { position: 10, importance: #HIGH, label: 'Image' } ]
+  FileContentList;
+
+  @UI.identification: [ { position: 80, qualifier: 'FILE' } ]
   FileContent;
   
   @UI.hidden: true

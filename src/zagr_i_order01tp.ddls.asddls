@@ -13,7 +13,7 @@ define root view entity ZAGR_I_Order01TP
       OrderDate,
       Status,
 
-
+      FileContent as FileContentList,
       FileContent,
       FileName,
 

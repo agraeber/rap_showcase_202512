@@ -19,6 +19,8 @@ define root view entity zagr_c_Order01TP
       OrderDate,
       Status,
       StatusText,
+  @Semantics.imageUrl: true      
+      FileContentList,     
       FileContent,
       FileName,
       
