@@ -3,7 +3,7 @@ CLASS LHC_ZAGR_R_CUSTOMER DEFINITION INHERITING FROM CL_ABAP_BEHAVIOR_HANDLER.
     METHODS:
       GET_GLOBAL_AUTHORIZATIONS FOR GLOBAL AUTHORIZATION
         IMPORTING
-           REQUEST requested_authorizations FOR ZagrRCustomer
+           REQUEST requested_authorizations FOR Customer
         RESULT result.
 ENDCLASS.
 

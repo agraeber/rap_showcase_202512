@@ -65,6 +65,7 @@ annotate view zagr_c_Order01TP with
 
   SalesorderID;
 
+  @Consumption.valueHelpDefinition: [{ entity: { name: 'ZAGR_I_CUSTOMER_VH', element: 'CustomerID' }, useForValidation: true }]
   @UI.identification: [ { position: 20, label: 'CustomerID' } ]
   @UI.lineItem: [ { position: 30, importance: #HIGH, label: 'CustomerID' } ]
   @UI.selectionField: [ { position: 20 } ]

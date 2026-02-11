@@ -3,7 +3,7 @@ strict ( 2 );
 extensible;
 use draft;
 use side effects;
-define behavior for ZAGR_C_CUSTOMER alias ZagrCCustomer
+define behavior for ZAGR_C_CUSTOMER alias Customer
 extensible
 use etag
 {

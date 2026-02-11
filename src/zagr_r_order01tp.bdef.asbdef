@@ -7,6 +7,7 @@ draft table zagrorder00d
 etag master LocalLastChangedAt
 lock master total etag LastChangedAt
 authorization master ( global )
+late numbering
 {
   field ( readonly )
   LocalCreatedBy,
@@ -14,8 +15,10 @@ authorization master ( global )
   LocalLastChangedAt,
   LastChangedAt;
 
-  field ( readonly : update )
+  field ( readonly )
   SalesorderID;
+  field ( mandatory )
+  CustomerID;
   field ( readonly )
   Status;
 
@@ -40,7 +43,7 @@ authorization master ( global )
   { event updated affects field *, messages;
   }
 
-//  determination setStatusToNew on modify { create; }
+  //  determination setStatusToNew on modify { create; }
 
   mapping for zagr_orderhd
     {
@@ -48,9 +51,9 @@ authorization master ( global )
       CustomerID         = CUSTOMER_ID;
       OrderDate          = ORDER_DATE;
       Status             = STATUS;
-      FileContent = filecontent;
-      Filename = filename;
-      MimeType = mimetype;
+      FileContent        = filecontent;
+      Filename           = filename;
+      MimeType           = mimetype;
       LocalCreatedBy     = LOCAL_CREATED_BY;
       LocalCreatedAt     = LOCAL_CREATED_AT;
       LocalLastChangedBy = LOCAL_LAST_CHANGED_BY;
@@ -68,13 +71,13 @@ draft table zagritem00d
 etag master LocalLastChangedAt
 lock dependent by _Order
 authorization dependent by _Order
+late numbering
 {
   field ( readonly )
   SalesorderID;
 
-  field ( readonly : update )
+  field ( readonly )
   ItemNo;
-
 
   update;
   delete;

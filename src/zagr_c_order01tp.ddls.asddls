@@ -14,7 +14,7 @@ define root view entity zagr_c_Order01TP
 {
       @Search.defaultSearchElement:true
   key SalesorderID,
-      @Consumption.valueHelpDefinition: [{entity: {name: 'ZAGR_I_CUSTOMER_VH', element: 'Customerid' }, useForValidation: true}]
+      @Consumption.valueHelpDefinition: [{entity: {name: 'ZAGR_I_CUSTOMER_VH', element: 'CustomerID' }, useForValidation: true}]
       CustomerID,
       OrderDate,
       Status,

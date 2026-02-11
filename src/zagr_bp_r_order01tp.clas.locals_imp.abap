@@ -4,6 +4,9 @@ CLASS lsc_order DEFINITION INHERITING FROM cl_abap_behavior_saver.
   PROTECTED SECTION.
 
     METHODS save_modified REDEFINITION.
+    METHODS adjust_numbers REDEFINITION.
+
+
 ENDCLASS.
 
 CLASS lsc_order IMPLEMENTATION.
@@ -25,6 +28,40 @@ CLASS lsc_order IMPLEMENTATION.
       ENDLOOP.
     ENDIF.
   ENDMETHOD.
+
+  METHOD adjust_numbers.
+    IF mapped-order IS INITIAL AND mapped-item IS INITIAL.
+      RETURN.
+    ENDIF.
+
+    " TODO: variable is assigned but never used (ABAP cleaner)
+    SELECT salesorder_id FROM zagr_orderhd INTO TABLE @DATA(order_ids).
+
+    SELECT MAX( salesorder_id ) FROM zagr_orderhd INTO @DATA(max_id).
+    IF sy-subrc <> 0 OR max_id IS INITIAL.
+      max_id = 1000000.
+    ENDIF.
+
+    " Automatische Nummernvergabe für neue Order
+    LOOP AT mapped-order ASSIGNING FIELD-SYMBOL(<order>).
+      max_id += 1.
+      <order>-SalesorderID = max_id.
+    ENDLOOP.
+
+    DATA(item_number) = CONV ZAGR_I_ItemTP-ItemNo( 0 ).
+    LOOP AT mapped-item ASSIGNING FIELD-SYMBOL(<item>) WHERE ItemNo IS INITIAL.
+      <item>-SalesorderID = <item>-%tmp-SalesorderID.
+      item_number += 10.
+      <item>-ItemNo = item_number.
+    ENDLOOP.
+
+*    READ ENTITIES OF ZAGR_R_Order01TP IN LOCAL MODE
+*         ENTITY Order
+*         FIELDS ( Status )
+*         WITH CORRESPONDING #( i_keys )
+*         RESULT DATA(Orders_Before).
+  ENDMETHOD.
+
 
 ENDCLASS.
 CLASS lhc_order DEFINITION INHERITING FROM cl_abap_behavior_handler
@@ -57,6 +94,8 @@ FRIENDS ltcl_ZAGR_R_Order01TP.
       IMPORTING keys FOR ACTION Order~Ship RESULT result.
     METHODS Cancel FOR MODIFY
       IMPORTING keys FOR ACTION Order~Cancel RESULT result.
+
+
 ENDCLASS.
 
 CLASS lhc_order IMPLEMENTATION.
@@ -120,7 +159,7 @@ CLASS lhc_order IMPLEMENTATION.
 
     set_status( i_keys = keys i_status = zcl_agr_order_state_creator=>co_order_state-new ).
     LOOP AT keys INTO DATA(key).
-      insert VALUE #( %tky = key-%tky ) into table result.
+      INSERT VALUE #( %tky = key-%tky ) INTO TABLE result.
     ENDLOOP.
 
   ENDMETHOD.
@@ -178,5 +217,7 @@ CLASS lhc_order IMPLEMENTATION.
 
 
   ENDMETHOD.
+
+
 
 ENDCLASS.

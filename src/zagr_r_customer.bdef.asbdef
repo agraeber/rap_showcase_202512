@@ -2,7 +2,7 @@ managed implementation in class ZAGR_BP_R_CUSTOMER unique;
 strict ( 2 );
 with draft;
 extensible;
-define behavior for ZAGR_R_CUSTOMER alias ZagrRCustomer
+define behavior for ZAGR_R_CUSTOMER alias Customer
 persistent table ZAGR_CUSTOMER
 extensible
 draft table ZAGR_CUSTOMER_D
