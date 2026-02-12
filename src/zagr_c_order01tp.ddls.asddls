@@ -11,19 +11,24 @@
 define root view entity zagr_c_Order01TP
   provider contract transactional_query
   as projection on ZAGR_R_Order01TP as Orderdata
+
 {
-      @Search.defaultSearchElement:true
+      @Search.defaultSearchElement: true
   key SalesorderID,
-      @Consumption.valueHelpDefinition: [{entity: {name: 'ZAGR_I_CUSTOMER_VH', element: 'CustomerID' }, useForValidation: true}]
+
+      @Consumption.valueHelpDefinition: [ { entity: { name: 'ZAGR_I_CUSTOMER_VH', element: 'CustomerID' },
+                                            useForValidation: true } ]
       CustomerID,
+
       OrderDate,
       Status,
       StatusText,
-  @Semantics.imageUrl: true      
-      FileContentList,     
+
+      @Semantics.imageUrl: true
+      FileContentList,
       FileContent,
       FileName,
-      
+
       MimeType,
       LocalCreatedBy,
       LocalCreatedAt,
@@ -33,6 +38,6 @@ define root view entity zagr_c_Order01TP
 
       /* Associations */
       _Item : redirected to composition child ZAGR_C_ItemTP,
+
       _Customer
-      
 }

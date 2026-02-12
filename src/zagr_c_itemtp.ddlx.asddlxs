@@ -39,4 +39,6 @@ annotate view ZAGR_C_ItemTP with
   @UI.identification: [ { position: 60, label: 'TotalPrice' } ]
   @UI.lineItem: [ { position: 60, importance: #HIGH, label: 'TotalPrice' } ]
   TotalPrice;
+  @UI.lineItem: [ { position: 70, importance: #HIGH, label: 'Image' } ]
+  ProductFileContent;  
 }

@@ -35,7 +35,13 @@ define view entity ZAGR_C_ItemTP
       @Consumption.valueHelpDefinition: [ { entity: { name: 'I_Currency', element: 'Currency' },
                                             useForValidation: true } ]
       Currency,
+      @Semantics.largeObject: { mimeType: 'ProductMimeType',
+                                fileName: 'ProductFileName',
+                                acceptableMimeTypes: [ 'image/jpeg' ] }
 
+      ProductFileContent,
+      ProductMimeType,
+      ProductFileName,
       LocalLastChangedAt,
       _Order : redirected to parent zagr_c_Order01TP,
       _Product

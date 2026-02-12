@@ -20,7 +20,6 @@ define root view entity ZAGR_R_Order01TP
       @Semantics.largeObject: { mimeType: 'MimeType',
                                 fileName: 'FileName',
                                 acceptableMimeTypes: [ 'image/jpeg' ] }
-      //@Semantics.imageUrl: true
       filecontent           as FileContent,
       @Semantics.largeObject: { mimeType: 'MimeType',
                                 fileName: 'FileName',

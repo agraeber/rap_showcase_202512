@@ -26,7 +26,12 @@ define view entity ZAGR_R_ItemTP
 
       @Semantics.systemDateTime.localInstanceLastChangedAt: true
       local_last_changed_at as LocalLastChangedAt,
+      @Semantics.imageUrl: true
+      _Product.FileContent as ProductFileContent, 
 
+      _Product.FileName as ProductFileName,
+      _Product.MimeType as ProductMimeType,
+      
       _Order,
       _Product
 }

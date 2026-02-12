@@ -3,6 +3,7 @@
 {
 "FROM":
 [
+"ZAGR_R_MATERIAL",
 "ZAGR_ORDERITM"
 ],
 "ASSOCIATED":

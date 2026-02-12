@@ -40,9 +40,9 @@ authorization master( global )
     Description = description;
     Price = price;
     Currency = currency;
-    Filecontent = filecontent;
-    Filename = filename;
-    Mimetype = mimetype;
+    FileContent = filecontent;
+    FileName = filename;
+    MimeType = mimetype;
     LocalCreatedBy = local_created_by;
     LocalCreatedAt = local_created_at;
     LocalLastChangedBy = local_last_changed_by;

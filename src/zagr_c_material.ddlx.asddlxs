@@ -1,164 +1,49 @@
 @Metadata.layer: #CORE
-@UI.headerInfo.title.type: #STANDARD
-@UI.headerInfo.title.value: 'Productid'
-@UI.headerInfo.description.type: #STANDARD
-@UI.headerInfo.description.value: 'Productid'
+
+@UI.headerInfo: { typeName: 'Product',
+                  typeNamePlural: 'Products',
+                  title: { type: #STANDARD, label: 'Order', value: 'Productid' },
+                   imageUrl: 'FileContent' }
 annotate view ZAGR_C_MATERIAL with
+
 {
   @EndUserText.label: 'Productid'
-  @UI.facet: [ {
-    label: 'General Information', 
-    id: 'GeneralInfo', 
-    purpose: #STANDARD, 
-    position: 10 , 
-    type: #IDENTIFICATION_REFERENCE
-  } ]
-  @UI.identification: [ {
-    position: 10 , 
-    label: 'Productid'
-  } ]
-  @UI.lineItem: [ {
-    position: 10 , 
-    label: 'Productid'
-  } ]
-  @UI.selectionField: [ {
-    position: 10 
-  } ]
+  @UI.facet: [ { label: 'General Information',
+                 id: 'GeneralInfo',
+                 purpose: #STANDARD,
+                 position: 10,
+                 type: #IDENTIFICATION_REFERENCE },
+               { id: 'idFiles',
+                 label: 'Files',
+                 position: 35,
+                 type: #IDENTIFICATION_REFERENCE,
+                 targetQualifier: 'FILE' } ]
+  @UI.identification: [ { position: 10, label: 'Productid' } ]
+  @UI.lineItem: [ { position: 10, label: 'Productid' } ]
+  @UI.selectionField: [ { position: 10 } ]
   Productid;
-  
+
   @EndUserText.label: 'Description'
-  @UI.identification: [ {
-    position: 20 , 
-    label: 'Description'
-  } ]
-  @UI.lineItem: [ {
-    position: 20 , 
-    label: 'Description'
-  } ]
-  @UI.selectionField: [ {
-    position: 20 
-  } ]
+  @UI.identification: [ { position: 20, label: 'Description' } ]
+  @UI.lineItem: [ { position: 20, label: 'Description' } ]
+  @UI.selectionField: [ { position: 20 } ]
   Description;
-  
+
   @EndUserText.label: 'Price'
-  @UI.identification: [ {
-    position: 30 , 
-    label: 'Price'
-  } ]
-  @UI.lineItem: [ {
-    position: 30 , 
-    label: 'Price'
-  } ]
-  @UI.selectionField: [ {
-    position: 30 
-  } ]
+  @UI.identification: [ { position: 30, label: 'Price' } ]
+  @UI.lineItem: [ { position: 30, label: 'Price' } ]
+  @UI.selectionField: [ { position: 30 } ]
   Price;
-  
-  @EndUserText.label: 'Filecontent'
-  @UI.identification: [ {
-    position: 40 , 
-    label: 'Filecontent'
-  } ]
-  @UI.lineItem: [ {
-    position: 40 , 
-    label: 'Filecontent'
-  } ]
-  Filecontent;
-  
-  @EndUserText.label: 'Filename'
-  @UI.identification: [ {
-    position: 50 , 
-    label: 'Filename'
-  } ]
-  @UI.lineItem: [ {
-    position: 50 , 
-    label: 'Filename'
-  } ]
-  @UI.selectionField: [ {
-    position: 50 
-  } ]
-  Filename;
-  
-  @EndUserText.label: 'Mimetype'
-  @UI.identification: [ {
-    position: 60 , 
-    label: 'Mimetype'
-  } ]
-  @UI.lineItem: [ {
-    position: 60 , 
-    label: 'Mimetype'
-  } ]
-  @UI.selectionField: [ {
-    position: 60 
-  } ]
-  Mimetype;
-  
-  @UI.identification: [ {
-    position: 70 
-  } ]
-  @UI.lineItem: [ {
-    position: 70 
-  } ]
-  @UI.selectionField: [ {
-    position: 70 
-  } ]
-  LocalCreatedBy;
-  
-  @UI.identification: [ {
-    position: 80 
-  } ]
-  @UI.lineItem: [ {
-    position: 80 
-  } ]
-  @UI.selectionField: [ {
-    position: 80 
-  } ]
-  LocalCreatedAt;
-  
-  @UI.identification: [ {
-    position: 90 
-  } ]
-  @UI.lineItem: [ {
-    position: 90 
-  } ]
-  @UI.selectionField: [ {
-    position: 90 
-  } ]
-  LocalLastChangedBy;
-  
-  @UI.identification: [ {
-    position: 100 
-  } ]
-  @UI.lineItem: [ {
-    position: 100 
-  } ]
-  @UI.selectionField: [ {
-    position: 100 
-  } ]
-  LocalLastChangedAt;
-  
-  @UI.identification: [ {
-    position: 110 
-  } ]
-  @UI.lineItem: [ {
-    position: 110 
-  } ]
-  @UI.selectionField: [ {
-    position: 110 
-  } ]
-  LastChangedAt;
-  
-  @EndUserText.label: '_BaseEntity'
-  @UI.identification: [ {
-    position: 120 , 
-    label: '_BaseEntity'
-  } ]
-  @UI.lineItem: [ {
-    position: 120 , 
-    label: '_BaseEntity'
-  } ]
-  @UI.selectionField: [ {
-    position: 120 
-  } ]
-  _BaseEntity;
+
+
+  @UI.lineItem: [ { position: 10, importance: #HIGH, label: 'Image' } ]
+  FileContentList;
+
+  @UI.identification: [ { position: 50, qualifier: 'FILE' } ]
+  FileContent;
+  @UI.hidden: true
+  MimeType;
+
+  @UI.hidden: true
+  FileName;
 }
