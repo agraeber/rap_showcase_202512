@@ -6,6 +6,7 @@
     <CTEXT>RAP showcase A. Graeber</CTEXT>
     <LANGUAGE>E</LANGUAGE>
     <MASTERLANG>E</MASTERLANG>
+    <SRV_CHECK>X</SRV_CHECK>
    </DEVC>
   </asx:values>
  </asx:abap>
