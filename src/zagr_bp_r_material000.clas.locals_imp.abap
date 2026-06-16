@@ -1,13 +1,13 @@
-CLASS LHC_ZAGR_R_MATERIAL DEFINITION INHERITING FROM CL_ABAP_BEHAVIOR_HANDLER.
+CLASS lhc_zagr_r_material DEFINITION INHERITING FROM cl_abap_behavior_handler.
   PRIVATE SECTION.
     METHODS:
-      GET_GLOBAL_AUTHORIZATIONS FOR GLOBAL AUTHORIZATION
+      get_global_authorizations FOR GLOBAL AUTHORIZATION
         IMPORTING
-           REQUEST requested_authorizations FOR Material
+        REQUEST requested_authorizations FOR Material
         RESULT result.
 ENDCLASS.
 
-CLASS LHC_ZAGR_R_MATERIAL IMPLEMENTATION.
-  METHOD GET_GLOBAL_AUTHORIZATIONS.
+CLASS lhc_zagr_r_material IMPLEMENTATION.
+  METHOD get_global_authorizations.
   ENDMETHOD.
 ENDCLASS.

@@ -1,21 +1,21 @@
 {
   "formatVersion": "2",
   "header": {
-    "description": "An SAP Fiori application.",
+    "description": "RAP showcase",
     "originalLanguage": "en",
     "abapLanguageVersion": "cloudDevelopment"
   },
   "generalInformation": {
     "appType": "ui5",
     "catalogId": "SAP_TC_UI5_REPO_UIAD",
-    "targetMappingTitle": "Orders"
+    "targetMappingTitle": "RAP showcase"
   },
   "ui5AppDetails": {
-    "appId": "ordershowcase"
+    "appId": "de.agraeber.rap.showcase.rapshowcase"
   },
   "navigation": {
-    "targetMappingId": "UI5R_C09826CAA256B99D38F7E96A03768BECCD0BA311_TM",
-    "semanticObject": "order",
+    "targetMappingId": "ZAGR_RAPSHOWCAS_UI5R_TM",
+    "semanticObject": "zrapschowcase",
     "action": "manage",
     "desktop": true,
     "tablet": true,
@@ -23,12 +23,12 @@
   },
   "tiles": [
     {
-      "id": "UI5R_C09826CAA256B99D38F7E96A03768BECCD0BA311_AL",
+      "id": "ZAGR_RAPSHOWCAS_UI5R_AL",
       "tileType": "static",
       "isDefault": true,
       "standard": {
-        "title": "Orders",
-        "subtitle": "Showcase A. Graeber"
+        "title": "RAP showcase",
+        "subtitle": "A. Graeber"
       }
     }
   ]
